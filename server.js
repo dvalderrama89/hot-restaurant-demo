@@ -8,28 +8,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Data
-const yoda = {
-  name: 'Yoda',
-  role: 'Jedi Master',
-  age: 900,
-  forcePoints: 2000,
-};
-
-const darthmaul = {
-  name: 'Darth Maul',
-  role: 'Sith Lord',
-  age: 200,
-  forcePoints: 1200,
-};
-
-const obiwankenobi = {
-  name: 'Obi Wan Kenobi',
-  role: 'Jedi Master',
-  age: 200,
-  forcePoints: 1500,
-};
-
 // Customers
 let customers = [
   {
