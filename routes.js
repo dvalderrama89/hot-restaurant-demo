@@ -13,3 +13,5 @@ app.get('/darthmaul', (req, res) => {
 app.get('/obiwankenobi', (req, res) => {
   res.json(obiwankenobi);
 });
+
+module.exports = routes;
