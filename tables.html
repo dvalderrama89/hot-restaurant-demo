@@ -53,18 +53,17 @@
 </body>
 
 
-<script type="javascript">
-
+<script>
     const runViewLists = () => {
         fetch('/api/tables', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/jason',
+                'Content-Type': 'application/json',
             },
         })  .then ((response) => response.json())
             .then((data) => {
                 for (let i = 0; i < data.length; i++) {
-                    const tableEl = document.getElementByID('tableEl');
+                    const tableEl = document.getElementById('tableEl');
 
                     const tableItem = document.createElement('li');
                     tableItem.classList.add('group-list-item', 'mt-6');
@@ -73,16 +72,16 @@
                     tableNumber.textContent = `Table #${i + 1}`;
 
                     const tableNameEl = document.createElement('h5');
-                    tableNameEl.textContent.add(`Name: ${data[i].name});
+                    tableNameEl.textContent = `Name: ${data[i].name}`;
 
                     const tablePhoneEl = document.createElement('h5');
-                    tablePhoneEl.textContent.add(`Phone: ${data[i].phone});
+                    tablePhoneEl.textContent = `Phone: ${data[i].phone}`;
                     
                     const tableEmailEl = document.createElement('h5');
-                    tableEmailEl.textContent.add(`Email: ${data[i].email});
+                    tableEmailEl.textContent = `Email: ${data[i].email}`;
 
                     const tableUniqueIDEl = document.createElement('h5');
-                    tableUniqueIDEl.textContent.add(`UniqueID: ${data[i].uniqueID});
+                    tableUniqueIDEl.textContent = `UniqueID: ${data[i].uniqueID}`;
 
                     tableItem.appendChild(tableNumber);
                     tableItem.appendChild(tableNameEl);
@@ -96,6 +95,7 @@
                 console.error('Error:', error);
             })
     }
+    runViewLists();
 </script>
 
 </html>
