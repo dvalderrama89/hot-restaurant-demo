@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -30,7 +31,17 @@ const obiwankenobi = {
 };
 
 // Customers
-const customers = [
+let customers = [
+  {
+    name: 'Test Test',
+    phone: '9512011234',
+    email: 'test@test.com',
+    uniqueID: '1234',
+  }
+];
+
+// Waitlist
+let waitlist = [
   {
     name: 'Test Test',
     phone: '9512011234',
@@ -41,23 +52,23 @@ const customers = [
 
 // Routes
 app.get('/', (req, res) => {
-  res.end("Restaurant main page")
+  res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 app.get('/api/tables', (req, res) => {
-  res.json(yoda);
+  res.json(customers);
 });
 
 app.get('/api/waitlist', (req, res) => {
-  res.json(obiwankenobi);
+  res.json(waitlist);
 });
 
 app.get('/tables', (req, res) => {
-  res.end("tables");
+  res.sendFile(path.join(__dirname, 'tables.html'));
 });
 
 app.get('/reserve', (req, res) => {
-  res.end("resrve");
+  res.sendFile(path.join(__dirname, 'reserve.html'));
 });
 
 // Create New Characters - takes in JSON input
@@ -79,6 +90,7 @@ app.post('/api/tables', (req, res) => {
 // Create New Characters - takes in JSON input
 app.post('/api/clear', (req, res) => {
   customers = [];
+  waitlist = [];
   res.json(customers);
 });
 
