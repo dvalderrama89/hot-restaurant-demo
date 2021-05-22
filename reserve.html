@@ -14,14 +14,14 @@
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">Make Your Reservation</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./tables.html">View Tables</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tables">View Tables</a></li>
                 
               </ul>
             </div>
           </nav>
         <div class="row">
-            <form   class="col s12">
+            <form   method= "POST" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                       <input id="name"  type="text" class="validate">
@@ -75,17 +75,27 @@
                     uniqueID: charUniqueId
                 };
                 console.log(Reservation);
-                /*
-                    fetch('/reserve', {
-                        method: 'POST',
-                        headers: {
+                
+                
+                fetch('/reserve', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(Reservation),
 
-                        }
+                })
+                .then((response) => response.json())
+                .then((data) =>{
+                  console.log('reserve.html', data);
+                })
+                .catch((error) =>{
+                  console.error('Error:', error);
+                });
+                
 
-                    })
 
-
-                */
+                
             })
         </script>
     </body>
