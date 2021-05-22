@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-         <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title>Make your reservation</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+        crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </head>
     <body>
@@ -13,24 +14,24 @@
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">Make Your Reservation</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="/tables.html">View Tables</a></li>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./tables.html">View Tables</a></li>
                 
               </ul>
             </div>
           </nav>
         <div class="row">
-            <form class="col s12">
+            <form   class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                      <input id="name" type="email" class="validate">
+                      <input id="name"  type="text" class="validate">
                       <label for="name">Name</label>
                     </div>
                   </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="phoneNum" type="email" class="validate">
-                  <label for="email">Phone Number</label>
+                  <input id="phoneNum" type="text" class="validate">
+                  <label for="phoneNum">Phone Number</label>
                 </div>
               </div>
               <div class="row">
@@ -41,13 +42,51 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="uniqueID" type="email" class="validate">
-                  <label for="email">Unique ID</label>
+                  <input id="uniqueId" type="text" class="validate">
+                  <label for="uniqueId">Unique ID</label>
                 </div>
               </div>
-              <a class="waves-effect waves-light btn">Submit</a>
+              <a id="reserve-button" class="waves-effect waves-light btn">Submit</a>
             </form>
         </div>
+        <footer class="page footer">
+
+            <a  href="./api/tables">API Table Link</a>
+            
+            <a  href="./api/waitlist">API Wait List</a>
+        </footer>
+
+        <script type="text/javascript">
+            const addBtn = document.getElementById('reserve-button');
+
+            //name, phone number, email, unique id
+            addBtn.addEventListener('click', (e) =>{
+                e.preventDefault();
+
+                let charName = document.getElementById('name').value.trim();
+                let charPhoneNum = document.getElementById('phoneNum').value.trim();
+                let charEmail = document.getElementById('email').value.trim();
+                let charUniqueId = document.getElementById('uniqueId').value.trim();
+
+                let Reservation = {
+                    name: charName,
+                    phone: charPhoneNum,
+                    email: charEmail,
+                    uniqueID: charUniqueId
+                };
+                console.log(Reservation);
+                /*
+                    fetch('/reserve', {
+                        method: 'POST',
+                        headers: {
+
+                        }
+
+                    })
+
+
+                */
+            })
+        </script>
     </body>
 </html> 
- 
